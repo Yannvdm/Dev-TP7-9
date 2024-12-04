@@ -94,6 +94,18 @@ def test_is_unit():
     assert f1.is_unit() is False
     assert f2.is_unit() is True
     assert f3.is_unit() is True
+
+def test_is_adjacent_to():
+    f1 = Fraction(2, 3)
+    f2 = Fraction(3, 4)
+    assert f1.is_adjacent_to(f2) == True
+    f5 = Fraction(-1, 4)
+    f6 = Fraction(-7, 12)
+    assert f5.is_adjacent_to(f6) == True
+
+def test_adjacent_no_fract():
+    with pytest.raises(TypeError, match="Other is not a Fraction"):
+        result = Fraction(1, 2) == 'hi'
 #Bonus
 
 def test_lt():
@@ -104,6 +116,10 @@ def test_lt():
     f4 = Fraction(9, 4)
     assert (f3 < f4) == True
 
+def test_lt_no_fract():
+    with pytest.raises(TypeError, match="Other is not a Fraction"):
+        result = Fraction(1, 2) == 'hi'
+
 def test_gt():
     f1 = Fraction(2, 1)
     f2 = Fraction(4, 8)
@@ -111,4 +127,8 @@ def test_gt():
     f3 = Fraction(2, 1)
     f4 = Fraction(9, 4)
     assert (f3 > f4) == False
+
+def test_gt_no_fract():
+    with pytest.raises(TypeError, match="Other is not a Fraction"):
+        result = Fraction(1, 2) == 1.45
 
