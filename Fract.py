@@ -175,6 +175,8 @@ class Fraction:
         POST : returns True if the fraction is less than the other
 
         """
+        if not isinstance(other, Fraction):
+            raise TypeError('Other is not a Fraction')
         return self._num * other._den < other._num * self._den
 
     def __gt__(self, other):
@@ -184,6 +186,8 @@ class Fraction:
         POST : returns True if the fraction is more than the other
 
         """
+        if not isinstance(other, Fraction):
+            raise TypeError('Other is not a Fraction')
         return self._num * other._den > other._num * self._den
 
     # ------------------ Properties checking  ------------------
@@ -230,4 +234,15 @@ class Fraction:
         PRE : other is an instance of Fraction
         POST : returns True if the fractions are adjacent
         """
-        return (self - other).is_unit()
+        if not isinstance(other, Fraction):
+            raise TypeError('Other is not a Fraction')
+        return abs(self - other).is_unit()
+
+    def __abs__(self):
+        """Overloading of the abs() function for fractions.
+
+        PRE: -
+        POST: Returns a new Fraction instance with a positive numerator and denominator.
+        """
+        return Fraction(abs(self._num), self._den)
+
