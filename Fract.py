@@ -29,6 +29,7 @@ class Fraction:
             self._num = -self._num
             self._den = -self._den
 
+    
     def reduce(self):
         """Simplify the fraction by dividing numerator and denominator by their GCD."""
         divisor = gcd(self._num, self._den)
@@ -58,6 +59,7 @@ class Fraction:
             return f'{self._num}'
         else : return f'{self._num}/{self._den}'
 
+    
     def as_mixed_number(self):
         """Return a textual representation of the reduced form of the fraction as a mixed number
 
@@ -79,6 +81,7 @@ class Fraction:
 
     # ------------------ Operators overloading ------------------
 
+    
     def __add__(self, other):
         """Overloading of the + operator for fractions
 
@@ -93,6 +96,7 @@ class Fraction:
         den = self._den * other._den
         return Fraction(num, den)
 
+    
     def __sub__(self, other):
         """Overloading of the - operator for fractions
 
@@ -106,6 +110,7 @@ class Fraction:
         den = self._den * other._den
         return Fraction(num, den)
 
+    
     def __mul__(self, other):
         """Overloading of the * operator for fractions
 
@@ -118,6 +123,7 @@ class Fraction:
         den = self._den * other._den
         return Fraction(num, den)
 
+    
     def __truediv__(self, other):
         """Overloading of the / operator for fractions
 
@@ -136,7 +142,6 @@ class Fraction:
         return Fraction(num, den)
 
 
-
     def __pow__(self, power:int):
         """Overloading of the ** operator for fractions
 
@@ -148,6 +153,7 @@ class Fraction:
         powered_fraction = Fraction(num_pow, den_pow)
         return powered_fraction.reduce()
 
+    
     def __eq__(self, other):
         """Overloading of the == operator for fractions
 
@@ -159,6 +165,7 @@ class Fraction:
             raise TypeError('Other is not a Fraction')
         return self._num == other._num and self._den == other._den
 
+    
     def __float__(self):
         """Returns the decimal value of the fraction
 
@@ -167,6 +174,7 @@ class Fraction:
         """
         return self._num / self._den
 
+    
     # TODO : [BONUS] You can overload other operators if you wish (ex : <, >, ...)
     def __lt__(self, other):
         """Compares two Fraction objects and returns True if the fraction is less than the other
@@ -179,6 +187,7 @@ class Fraction:
             raise TypeError('Other is not a Fraction')
         return self._num * other._den < other._num * self._den
 
+    
     def __gt__(self, other):
         """Compares two Fraction objects and returns True if the fraction is more than the other
 
@@ -192,6 +201,7 @@ class Fraction:
 
     # ------------------ Properties checking  ------------------
 
+    
     def is_zero(self):
         """Check if a fraction's value is 0
 
@@ -200,6 +210,7 @@ class Fraction:
         """
         return self._num == 0
 
+    
     def is_integer(self):
         """Check if a fraction is integer (ex : 8/4, 3, 2/2, ...)
 
@@ -208,6 +219,7 @@ class Fraction:
         """
         return self._num % self._den == 0
 
+    
     def is_proper(self):
         """Check if the absolute value of the fraction is < 1
 
@@ -216,6 +228,7 @@ class Fraction:
         """
         return abs(self._num) < abs(self._den)
 
+    
     def is_unit(self):
         """Check if a fraction's numerator is 1 in its reduced form
 
@@ -238,6 +251,7 @@ class Fraction:
             raise TypeError('Other is not a Fraction')
         return abs(self - other).is_unit()
 
+    
     def __abs__(self):
         """Overloading of the abs() function for fractions.
 
